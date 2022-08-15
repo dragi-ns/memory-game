@@ -1,0 +1,82 @@
+[
+    {
+        "id": "1",
+        "name": "Plum",
+        "image": "knedla1.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Apricot",
+        "image": "knedla2.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Nutella",
+        "image": "knedla3.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Raffaello",
+        "image": "knedla4.jpg"
+    },
+    {
+        "id": "5",
+        "name": "The sweet one",
+        "image": "knedla5.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Raspberry sweet cheese",
+        "image": "knedla6.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Choco-raspberry",
+        "image": "knedla7.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Choco-cherry",
+        "image": "knedla8.jpg"
+    },
+    {
+        "id": "9",
+        "name": "Amaretti",
+        "image": "knedla9.jpg"
+    },
+    {
+        "id": "10",
+        "name": "Caramel",
+        "image": "knedla10.jpg"
+    },
+    {
+        "id": "11",
+        "name": "Passion furit - wild blackberry",
+        "image": "knedla11.jpg"
+    },
+    {
+        "id": "12",
+        "name": "Queen Mary",
+        "image": "knedla12.jpg"
+    },
+    {
+        "id": "13",
+        "name": "Pistachio",
+        "image": "knedla13.jpg"
+    },
+    {
+        "id": "14",
+        "name": "The Madagascar Princess",
+        "image": "knedla14.jpg"
+    },
+    {
+        "id": "15",
+        "name": "Imperial knödel",
+        "image": "knedla15.jpg"
+    },
+    {
+        "id": "16",
+        "name": "Wild Strawberry",
+        "image": "knedla16.jpg"
+    }
+]
