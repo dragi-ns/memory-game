@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import FlipMove from 'react-flip-move';
 import shuffle from 'shuffle-array';
 import Card from './Card';
 import data from '../data.json';
+
+const CardForwardRef = forwardRef(Card);
 
 function Main() {
   const selectedDumplingsId = useRef(new Set());
@@ -65,7 +67,7 @@ function Main() {
           </div>
           <FlipMove className="cards" appearAnimation="elevator">
             {dumplings.map((dumpling) => (
-              <Card
+              <CardForwardRef
                 key={dumpling.id}
                 imgSrc={dumpling.image}
                 name={dumpling.name}
