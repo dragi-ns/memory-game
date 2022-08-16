@@ -3,8 +3,8 @@ function Header() {
     <header className="app-header">
       <h1 className="logo">Knödel Memory Game</h1>
       <p>
-        Get points by clicking on knödel, but don't click on same knödel more
-        than once!
+        Get points by clicking on knödel, but don't click on the same knödel
+        more than once!
       </p>
     </header>
   );

@@ -1,17 +1,20 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, forwardRef, useState } from 'react';
 import FlipMove from 'react-flip-move';
 import shuffle from 'shuffle-array';
 import Card from './Card';
+import MessageOverlay from './MessageOverlay';
 import data from '../data.json';
 
 const CardForwardRef = forwardRef(Card);
+const MessageOverlayForwardRef = forwardRef(MessageOverlay);
 
 function Main() {
   const selectedDumplingsId = useRef(new Set());
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [dumplings, setDumplings] = useState(shuffleDumplings(data));
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState(null);
+  const [dumplings, setDumplings] = useState(shuffleDumplings(data));
 
   useEffect(() => {
     function loadImage(src) {
@@ -37,26 +40,53 @@ function Main() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [score]);
+
   function handleDumplingSelection(dumplingId) {
     if (selectedDumplingsId.current.has(dumplingId)) {
-      selectedDumplingsId.current = new Set();
-      if (score > bestScore) {
-        setBestScore(score);
-      }
-      setScore(0);
+      setMessage('You clicked the same knödel twice!');
     } else {
       selectedDumplingsId.current.add(dumplingId);
       setScore((prevScore) => prevScore + 1);
+      if (selectedDumplingsId.current.size === dumplings.length) {
+        setMessage('Good job! You won the game!');
+      } else {
+        setDumplings(shuffleDumplings([...dumplings]));
+      }
     }
-    setDumplings(shuffleDumplings([...dumplings]));
   }
 
   function shuffleDumplings(dumplings) {
     return shuffle(dumplings);
   }
 
+  function reset() {
+    selectedDumplingsId.current = new Set();
+    setScore(0);
+    setDumplings(shuffleDumplings([...dumplings]));
+  }
+
+  function handleModalClose() {
+    reset();
+    setMessage(null);
+  }
+
   return (
     <main className="app-main">
+      {message && (
+        <FlipMove typeName={null} appearAnimation="fade">
+          <MessageOverlayForwardRef
+            key={message}
+            message={message}
+            onClick={handleModalClose}
+          />
+        </FlipMove>
+      )}
       {loading ? (
         <p style={{ fontSize: '18px', textAlign: 'center' }}>Loading data...</p>
       ) : (
